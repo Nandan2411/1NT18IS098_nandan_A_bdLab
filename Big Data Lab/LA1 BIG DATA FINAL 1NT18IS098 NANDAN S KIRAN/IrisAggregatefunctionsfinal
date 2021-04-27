@@ -1,0 +1,295 @@
+> db.flowers.aggregate({$group:{_id:"$sepallength"}});
+{ "_id" : 5.6 }
+{ "_id" : 4.6 }
+{ "_id" : 6.5 }
+{ "_id" : 4.7 }
+{ "_id" : 7.7 }
+{ "_id" : 6.8 }
+{ "_id" : 4.9 }
+{ "_id" : 5.7 }
+{ "_id" : 6.3 }
+{ "_id" : 7.2 }
+{ "_id" : 5.1 }
+{ "_id" : 5.3 }
+{ "_id" : 7.9 }
+{ "_id" : 4.8 }
+{ "_id" : 4.3 }
+{ "_id" : 5.2 }
+{ "_id" : 6 }
+{ "_id" : 7.3 }
+{ "_id" : 6.1 }
+{ "_id" : 6.6 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",numberofrecords:{sum:1}}});
+uncaught exception: Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "The field 'numberofrecords' must be an accumulator object",
+	"code" : 40234,
+	"codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.flowers.aggregate({$group:{_id:"$sepallength",numberofrecords:{$sum:1}}});
+{ "_id" : 5.6, "numberofrecords" : 6 }
+{ "_id" : 4.6, "numberofrecords" : 4 }
+{ "_id" : 6.5, "numberofrecords" : 5 }
+{ "_id" : 4.7, "numberofrecords" : 2 }
+{ "_id" : 7.7, "numberofrecords" : 4 }
+{ "_id" : 6.8, "numberofrecords" : 3 }
+{ "_id" : 4.9, "numberofrecords" : 6 }
+{ "_id" : 5.7, "numberofrecords" : 9 }
+{ "_id" : 6.3, "numberofrecords" : 9 }
+{ "_id" : 7.2, "numberofrecords" : 3 }
+{ "_id" : 5.1, "numberofrecords" : 9 }
+{ "_id" : 5.3, "numberofrecords" : 1 }
+{ "_id" : 7.9, "numberofrecords" : 1 }
+{ "_id" : 4.8, "numberofrecords" : 5 }
+{ "_id" : 4.3, "numberofrecords" : 1 }
+{ "_id" : 5.2, "numberofrecords" : 4 }
+{ "_id" : 6, "numberofrecords" : 6 }
+{ "_id" : 7.3, "numberofrecords" : 1 }
+{ "_id" : 6.1, "numberofrecords" : 6 }
+{ "_id" : 6.6, "numberofrecords" : 2 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$sum:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 25.2 }
+{ "_id" : 4.6, "totalpetallength" : 5.3 }
+{ "_id" : 6.5, "totalpetallength" : 26.2 }
+{ "_id" : 4.7, "totalpetallength" : 2.9000000000000004 }
+{ "_id" : 7.7, "totalpetallength" : 26.4 }
+{ "_id" : 6.8, "totalpetallength" : 16.2 }
+{ "_id" : 4.9, "totalpetallength" : 13.7 }
+{ "_id" : 5.7, "totalpetallength" : 29.7 }
+{ "_id" : 6.3, "totalpetallength" : 46.2 }
+{ "_id" : 7.2, "totalpetallength" : 17.9 }
+{ "_id" : 5.1, "totalpetallength" : 15.5 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 7.9 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 8.3 }
+{ "_id" : 6, "totalpetallength" : 27.9 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 28.5 }
+{ "_id" : 6.6, "totalpetallength" : 9 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$avg:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 4.2 }
+{ "_id" : 4.6, "totalpetallength" : 1.325 }
+{ "_id" : 6.5, "totalpetallength" : 5.24 }
+{ "_id" : 4.7, "totalpetallength" : 1.4500000000000002 }
+{ "_id" : 7.7, "totalpetallength" : 6.6 }
+{ "_id" : 6.8, "totalpetallength" : 5.3999999999999995 }
+{ "_id" : 4.9, "totalpetallength" : 2.283333333333333 }
+{ "_id" : 5.7, "totalpetallength" : 3.3 }
+{ "_id" : 6.3, "totalpetallength" : 5.133333333333334 }
+{ "_id" : 7.2, "totalpetallength" : 5.966666666666666 }
+{ "_id" : 5.1, "totalpetallength" : 1.7222222222222223 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 1.58 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 2.075 }
+{ "_id" : 6, "totalpetallength" : 4.6499999999999995 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 4.75 }
+{ "_id" : 6.6, "totalpetallength" : 4.5 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$max:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 4.9 }
+{ "_id" : 4.6, "totalpetallength" : 1.5 }
+{ "_id" : 6.5, "totalpetallength" : 5.8 }
+{ "_id" : 4.7, "totalpetallength" : 1.6 }
+{ "_id" : 7.7, "totalpetallength" : 6.9 }
+{ "_id" : 6.8, "totalpetallength" : 5.9 }
+{ "_id" : 4.9, "totalpetallength" : 4.5 }
+{ "_id" : 5.7, "totalpetallength" : 5 }
+{ "_id" : 6.3, "totalpetallength" : 6 }
+{ "_id" : 7.2, "totalpetallength" : 6.1 }
+{ "_id" : 5.1, "totalpetallength" : 3 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 1.9 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 3.9 }
+{ "_id" : 6, "totalpetallength" : 5.1 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 5.6 }
+{ "_id" : 6.6, "totalpetallength" : 4.6 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$min:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 3.6 }
+{ "_id" : 4.6, "totalpetallength" : 1 }
+{ "_id" : 6.5, "totalpetallength" : 4.6 }
+{ "_id" : 4.7, "totalpetallength" : 1.3 }
+{ "_id" : 7.7, "totalpetallength" : 6.1 }
+{ "_id" : 6.8, "totalpetallength" : 4.8 }
+{ "_id" : 4.9, "totalpetallength" : 1.4 }
+{ "_id" : 5.7, "totalpetallength" : 1 }
+{ "_id" : 6.3, "totalpetallength" : 4.4 }
+{ "_id" : 7.2, "totalpetallength" : 5.8 }
+{ "_id" : 5.1, "totalpetallength" : 1.4 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 1.4 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 1.4 }
+{ "_id" : 6, "totalpetallength" : 4 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 4 }
+{ "_id" : 6.6, "totalpetallength" : 4.4 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$first:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 3.6 }
+{ "_id" : 4.6, "totalpetallength" : 1.5 }
+{ "_id" : 6.5, "totalpetallength" : 4.6 }
+{ "_id" : 4.7, "totalpetallength" : 1.3 }
+{ "_id" : 7.7, "totalpetallength" : 6.7 }
+{ "_id" : 6.8, "totalpetallength" : 4.8 }
+{ "_id" : 4.9, "totalpetallength" : 1.4 }
+{ "_id" : 5.7, "totalpetallength" : 1.5 }
+{ "_id" : 6.3, "totalpetallength" : 4.7 }
+{ "_id" : 7.2, "totalpetallength" : 6.1 }
+{ "_id" : 5.1, "totalpetallength" : 1.4 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 1.6 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 1.5 }
+{ "_id" : 6, "totalpetallength" : 4 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 4.7 }
+{ "_id" : 6.6, "totalpetallength" : 4.6 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$last:"$petallength"}}});
+{ "_id" : 5.6, "totalpetallength" : 4.9 }
+{ "_id" : 4.6, "totalpetallength" : 1.4 }
+{ "_id" : 6.5, "totalpetallength" : 5.2 }
+{ "_id" : 4.7, "totalpetallength" : 1.6 }
+{ "_id" : 7.7, "totalpetallength" : 6.1 }
+{ "_id" : 6.8, "totalpetallength" : 5.9 }
+{ "_id" : 4.9, "totalpetallength" : 4.5 }
+{ "_id" : 5.7, "totalpetallength" : 1 }
+{ "_id" : 6.3, "totalpetallength" : 5 }
+{ "_id" : 7.2, "totalpetallength" : 5.8 }
+{ "_id" : 5.1, "totalpetallength" : 3 }
+{ "_id" : 5.3, "totalpetallength" : 1.5 }
+{ "_id" : 7.9, "totalpetallength" : 6.4 }
+{ "_id" : 4.8, "totalpetallength" : 1.4 }
+{ "_id" : 4.3, "totalpetallength" : 1.1 }
+{ "_id" : 5.2, "totalpetallength" : 3.9 }
+{ "_id" : 6, "totalpetallength" : 4.8 }
+{ "_id" : 7.3, "totalpetallength" : 6.3 }
+{ "_id" : 6.1, "totalpetallength" : 4.9 }
+{ "_id" : 6.6, "totalpetallength" : 4.4 }
+Type "it" for more
+> db.flowers.aggregate({$group:{_id:"$sepallength",totalpetallength:{$sort:"$petallength"}}});
+uncaught exception: Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "unknown group operator '$sort'",
+	"code" : 15952,
+	"codeName" : "Location15952"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.flowers.aggregate({$sort:{_id:"$sepallength"}});
+uncaught exception: Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "Illegal key in $sort specification: _id: \"$sepallength\"",
+	"code" : 15974,
+	"codeName" : "Location15974"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.flowers.aggregate({$match:{"petallength":{$in:1}}});
+uncaught exception: Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$in needs an array",
+	"code" : 2,
+	"codeName" : "BadValue"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.flowers.aggregate({$match:{"petallength":{$in:{1}}}});
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:51
+> db.flowers.aggregate({$match:{petallength:{$in:1}}});
+uncaught exception: Error: command failed: {
+	"ok" : 0,
+	"errmsg" : "$in needs an array",
+	"code" : 2,
+	"codeName" : "BadValue"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.flowers.aggregate({$match:{petallength:{$in:[1]}}});
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4f1"), "sepallength" : 4.6, "sepalwidth" : 3.6, "petallength" : 1, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("6085732dbb14867d5e837a80"), "sepallength" : 5.9, "sepalwidth" : 2.9, "petallength" : 1, "petalwidth" : 0.3, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("608573babb14867d5e837a81"), "sepallength" : 5.8, "sepalwidth" : 2.8, "petallength" : 1, "petalwidth" : 0.8, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("608573babb14867d5e837a82"), "sepallength" : 5.7, "sepalwidth" : 2.5, "petallength" : 1, "petalwidth" : 0.6, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("6085746abb14867d5e837a83"), "sepallength" : 5.5, "sepalwidth" : 2.7, "petallength" : 1, "petalwidth" : 0.6, "class" : "Iris-setosa" }
+> db.flowers.aggregate([{$limit:10}]);
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4de"), "sepallength" : 5.1, "sepalwidth" : 3.5, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4df"), "sepallength" : 4.7, "sepalwidth" : 3.2, "petallength" : 1.3, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e0"), "sepallength" : 4.6, "sepalwidth" : 3.1, "petallength" : 1.5, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e1"), "sepallength" : 5, "sepalwidth" : 3.6, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e2"), "sepallength" : 4.9, "sepalwidth" : 3, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e3"), "sepallength" : 5.4, "sepalwidth" : 3.9, "petallength" : 1.7, "petalwidth" : 0.4, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e4"), "sepallength" : 4.9, "sepalwidth" : 3.1, "petallength" : 1.5, "petalwidth" : 0.1, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e5"), "sepallength" : 5.4, "sepalwidth" : 3.7, "petallength" : 1.5, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e6"), "sepallength" : 4.8, "sepalwidth" : 3.4, "petallength" : 1.6, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e7"), "sepallength" : 4.8, "sepalwidth" : 3, "petallength" : 1.4, "petalwidth" : 0.1, "class" : "Iris-setosa" }
+> db.flowers.find().count();
+154
+> db.flowers.find().limit(2);
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4de"), "sepallength" : 5.1, "sepalwidth" : 3.5, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4df"), "sepallength" : 4.7, "sepalwidth" : 3.2, "petallength" : 1.3, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+> db.flowers.find().skip(2);
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e0"), "sepallength" : 4.6, "sepalwidth" : 3.1, "petallength" : 1.5, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e1"), "sepallength" : 5, "sepalwidth" : 3.6, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e2"), "sepallength" : 4.9, "sepalwidth" : 3, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e3"), "sepallength" : 5.4, "sepalwidth" : 3.9, "petallength" : 1.7, "petalwidth" : 0.4, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e4"), "sepallength" : 4.9, "sepalwidth" : 3.1, "petallength" : 1.5, "petalwidth" : 0.1, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e5"), "sepallength" : 5.4, "sepalwidth" : 3.7, "petallength" : 1.5, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e6"), "sepallength" : 4.8, "sepalwidth" : 3.4, "petallength" : 1.6, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e7"), "sepallength" : 4.8, "sepalwidth" : 3, "petallength" : 1.4, "petalwidth" : 0.1, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e8"), "sepallength" : 4.3, "sepalwidth" : 3, "petallength" : 1.1, "petalwidth" : 0.1, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4e9"), "sepallength" : 4.4, "sepalwidth" : 2.9, "petallength" : 1.4, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4ea"), "sepallength" : 5.8, "sepalwidth" : 4, "petallength" : 1.2, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4eb"), "sepallength" : 4.6, "sepalwidth" : 3.4, "petallength" : 1.4, "petalwidth" : 0.3, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4ec"), "sepallength" : 5.7, "sepalwidth" : 4.4, "petallength" : 1.5, "petalwidth" : 0.4, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4ed"), "sepallength" : 5.4, "sepalwidth" : 3.9, "petallength" : 1.3, "petalwidth" : 0.4, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4ee"), "sepallength" : 5.1, "sepalwidth" : 3.5, "petallength" : 1.4, "petalwidth" : 0.3, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4ef"), "sepallength" : 5.7, "sepalwidth" : 3.8, "petallength" : 1.7, "petalwidth" : 0.3, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4f0"), "sepallength" : 5.1, "sepalwidth" : 3.7, "petallength" : 1.5, "petalwidth" : 0.4, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4f1"), "sepallength" : 4.6, "sepalwidth" : 3.6, "petallength" : 1, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4f2"), "sepallength" : 5.1, "sepalwidth" : 3.3, "petallength" : 1.7, "petalwidth" : 0.5, "class" : "Iris-setosa" }
+{ "_id" : ObjectId("607d22bc20f4d61c9ccfa4f3"), "sepallength" : 4.8, "sepalwidth" : 3.4, "petallength" : 1.9, "petalwidth" : 0.2, "class" : "Iris-setosa" }
+Type "it" for more
+> 
+

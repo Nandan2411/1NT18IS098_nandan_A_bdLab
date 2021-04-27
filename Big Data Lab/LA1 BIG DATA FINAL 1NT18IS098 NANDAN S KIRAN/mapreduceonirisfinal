@@ -1,0 +1,201 @@
+> show databases;
+Company    0.000GB
+Customer   0.000GB
+Custoner1  0.000GB
+admin      0.000GB
+config     0.000GB
+iris       0.000GB
+iris_test  0.000GB
+local      0.000GB
+regex      0.000GB
+> use iris
+switched to db iris
+> show collections;
+flowers
+order_details
+> db.flowers.find().pretty()
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4de"),
+	"sepallength" : 5.1,
+	"sepalwidth" : 3.5,
+	"petallength" : 1.4,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4df"),
+	"sepallength" : 4.7,
+	"sepalwidth" : 3.2,
+	"petallength" : 1.3,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e0"),
+	"sepallength" : 4.6,
+	"sepalwidth" : 3.1,
+	"petallength" : 1.5,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e1"),
+	"sepallength" : 5,
+	"sepalwidth" : 3.6,
+	"petallength" : 1.4,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e2"),
+	"sepallength" : 4.9,
+	"sepalwidth" : 3,
+	"petallength" : 1.4,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e3"),
+	"sepallength" : 5.4,
+	"sepalwidth" : 3.9,
+	"petallength" : 1.7,
+	"petalwidth" : 0.4,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e4"),
+	"sepallength" : 4.9,
+	"sepalwidth" : 3.1,
+	"petallength" : 1.5,
+	"petalwidth" : 0.1,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e5"),
+	"sepallength" : 5.4,
+	"sepalwidth" : 3.7,
+	"petallength" : 1.5,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e6"),
+	"sepallength" : 4.8,
+	"sepalwidth" : 3.4,
+	"petallength" : 1.6,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e7"),
+	"sepallength" : 4.8,
+	"sepalwidth" : 3,
+	"petallength" : 1.4,
+	"petalwidth" : 0.1,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e8"),
+	"sepallength" : 4.3,
+	"sepalwidth" : 3,
+	"petallength" : 1.1,
+	"petalwidth" : 0.1,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4e9"),
+	"sepallength" : 4.4,
+	"sepalwidth" : 2.9,
+	"petallength" : 1.4,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4ea"),
+	"sepallength" : 5.8,
+	"sepalwidth" : 4,
+	"petallength" : 1.2,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4eb"),
+	"sepallength" : 4.6,
+	"sepalwidth" : 3.4,
+	"petallength" : 1.4,
+	"petalwidth" : 0.3,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4ec"),
+	"sepallength" : 5.7,
+	"sepalwidth" : 4.4,
+	"petallength" : 1.5,
+	"petalwidth" : 0.4,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4ed"),
+	"sepallength" : 5.4,
+	"sepalwidth" : 3.9,
+	"petallength" : 1.3,
+	"petalwidth" : 0.4,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4ee"),
+	"sepallength" : 5.1,
+	"sepalwidth" : 3.5,
+	"petallength" : 1.4,
+	"petalwidth" : 0.3,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4ef"),
+	"sepallength" : 5.7,
+	"sepalwidth" : 3.8,
+	"petallength" : 1.7,
+	"petalwidth" : 0.3,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4f0"),
+	"sepallength" : 5.1,
+	"sepalwidth" : 3.7,
+	"petallength" : 1.5,
+	"petalwidth" : 0.4,
+	"class" : "Iris-setosa"
+}
+{
+	"_id" : ObjectId("607d22bc20f4d61c9ccfa4f1"),
+	"sepallength" : 4.6,
+	"sepalwidth" : 3.6,
+	"petallength" : 1,
+	"petalwidth" : 0.2,
+	"class" : "Iris-setosa"
+}
+Type "it" for more
+> db.flowers.mapReduce(function(){emit(this.sepallength,this.petallength);}, function(key, value){return Array.sum(value)}, {query:{status:"A"}, out:"order_details"});
+{ "result" : "order_details", "ok" : 1 }
+> db.order_details.find({});
+> db.flowers.mapReduce(function(){emit(this.sepallength,this.petallength);}, function(key, value){return Array.sum(value)}, {query:{class:"Iris-setosa"}, out:"flower_details"});
+{ "result" : "flower_details", "ok" : 1 }
+> db.flower_details.find({});
+{ "_id" : 5.4, "value" : 7.7 }
+{ "_id" : 5.8, "value" : 2.2 }
+{ "_id" : 5.2, "value" : 4.4 }
+{ "_id" : 5.9, "value" : 1 }
+{ "_id" : 4.6, "value" : 5.3 }
+{ "_id" : 5.7, "value" : 4.2 }
+{ "_id" : 4.4, "value" : 4 }
+{ "_id" : 4.9, "value" : 5.9 }
+{ "_id" : 5.3, "value" : 1.5 }
+{ "_id" : 5.1, "value" : 12.5 }
+{ "_id" : 5, "value" : 11.6 }
+{ "_id" : 4.3, "value" : 1.1 }
+{ "_id" : 4.5, "value" : 1.3 }
+{ "_id" : 4.7, "value" : 2.9000000000000004 }
+{ "_id" : 5.5, "value" : 3.6999999999999997 }
+{ "_id" : 4.8, "value" : 7.9 }
+> 
+

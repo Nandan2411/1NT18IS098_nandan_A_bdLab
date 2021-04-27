@@ -1,0 +1,8 @@
+nandan@nandan-Aspire-E5-571P:~$ mongo import --db iris_test --collection flow --file /home/nandan/Documents/iris_test.json
+Error parsing command line: unrecognised option '--db'
+try 'mongo --help' for more information
+nandan@nandan-Aspire-E5-571P:~$ mongoimport --db iris_test --collection flow --file /home/nandan/Documents/iris_test.json
+2021-04-25T19:10:37.978+0530	connected to: mongodb://localhost/
+2021-04-25T19:10:38.247+0530	150 document(s) imported successfully. 0 document(s) failed to import.
+nandan@nandan-Aspire-E5-571P:~$ 
+

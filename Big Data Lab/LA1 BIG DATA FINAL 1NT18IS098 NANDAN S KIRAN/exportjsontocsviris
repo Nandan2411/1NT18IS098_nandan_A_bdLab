@@ -1,0 +1,5 @@
+nandan@nandan-Aspire-E5-571P:~$ mongoexport --collection=flow --db=iris_test --out=/home/nandan/Documents/iris1.csv
+2021-04-25T19:14:20.105+0530	connected to: mongodb://localhost/
+2021-04-25T19:14:20.120+0530	exported 150 records
+nandan@nandan-Aspire-E5-571P:~$ 
+
