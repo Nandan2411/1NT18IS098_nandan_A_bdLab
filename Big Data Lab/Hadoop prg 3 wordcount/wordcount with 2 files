@@ -1,0 +1,130 @@
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -mkdir /home/hdoop/eclipse-workspace1/
+^[[Amkdir: `hdfs://127.0.0.1:9000/home/hdoop': No such file or directory
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -mkdir /home/hdoop/eclipse-workspace1/word
+mkdir: `hdfs://127.0.0.1:9000/home/hdoop/eclipse-workspace1': No such file or directory
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -mkdir word
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls
+Found 14 items
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:52 NandanSkiran
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:37 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:38 empty1.txt
+-rw-r--r--   1 hdoop supergroup          3 2021-05-07 00:07 f2.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:39 input1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:05 new.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:04 new1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:08 new3.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:44 output1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:59 prog2
+-rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:51 word
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -copyFromLocal input.txt word/input.txt
+2021-05-10 12:53:03,168 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls word/
+Found 1 items
+-rw-r--r--   1 hdoop supergroup         46 2021-05-10 12:53 word/input.txt
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -copyFromLocal input1.txt word/input1.txt
+2021-05-10 12:54:21,219 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls word/
+Found 2 items
+-rw-r--r--   1 hdoop supergroup         46 2021-05-10 12:53 word/input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:54 word/input1.txt
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop jar wordcount1.jar WordCount word output3
+2021-05-10 12:55:51,069 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-05-10 12:55:51,654 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-05-10 12:55:51,712 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1620625125244_0002
+2021-05-10 12:55:51,958 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-10 12:55:52,186 INFO input.FileInputFormat: Total input files to process : 2
+2021-05-10 12:55:52,299 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-10 12:55:52,832 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-10 12:55:52,853 INFO mapreduce.JobSubmitter: number of splits:2
+2021-05-10 12:55:53,075 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-05-10 12:55:53,097 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1620625125244_0002
+2021-05-10 12:55:53,097 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-05-10 12:55:53,472 INFO conf.Configuration: resource-types.xml not found
+2021-05-10 12:55:53,473 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-05-10 12:55:53,596 INFO impl.YarnClientImpl: Submitted application application_1620625125244_0002
+2021-05-10 12:55:53,647 INFO mapreduce.Job: The url to track the job: http://nandan-Aspire-E5-571P:8088/proxy/application_1620625125244_0002/
+2021-05-10 12:55:53,648 INFO mapreduce.Job: Running job: job_1620625125244_0002
+2021-05-10 12:56:02,872 INFO mapreduce.Job: Job job_1620625125244_0002 running in uber mode : false
+2021-05-10 12:56:02,873 INFO mapreduce.Job:  map 0% reduce 0%
+2021-05-10 12:56:17,227 INFO mapreduce.Job:  map 100% reduce 0%
+2021-05-10 12:56:37,832 INFO mapreduce.Job:  map 100% reduce 100%
+2021-05-10 12:56:38,849 INFO mapreduce.Job: Job job_1620625125244_0002 completed successfully
+2021-05-10 12:56:38,986 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=104
+		FILE: Number of bytes written=676515
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=314
+		HDFS: Number of bytes written=49
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=22939
+		Total time spent by all reduces in occupied slots (ms)=16493
+		Total time spent by all map tasks (ms)=22939
+		Total time spent by all reduce tasks (ms)=16493
+		Total vcore-milliseconds taken by all map tasks=22939
+		Total vcore-milliseconds taken by all reduce tasks=16493
+		Total megabyte-milliseconds taken by all map tasks=23489536
+		Total megabyte-milliseconds taken by all reduce tasks=16888832
+	Map-Reduce Framework
+		Map input records=7
+		Map output records=18
+		Map output bytes=160
+		Map output materialized bytes=110
+		Input split bytes=225
+		Combine input records=18
+		Combine output records=9
+		Reduce input groups=7
+		Reduce shuffle bytes=110
+		Reduce input records=9
+		Reduce output records=7
+		Spilled Records=18
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=300
+		CPU time spent (ms)=2480
+		Physical memory (bytes) snapshot=669364224
+		Virtual memory (bytes) snapshot=7770394624
+		Total committed heap usage (bytes)=576192512
+		Peak Map Physical memory (bytes)=263036928
+		Peak Map Virtual memory (bytes)=2587054080
+		Peak Reduce Physical memory (bytes)=146153472
+		Peak Reduce Virtual memory (bytes)=2597711872
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=89
+	File Output Format Counters 
+		Bytes Written=49
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -ls output3/
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-05-10 12:56 output3/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         49 2021-05-10 12:56 output3/part-r-00000
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ hadoop fs -cat output3/part-r-00000
+2021-05-10 12:58:16,198 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+bike	1
+car	4
+deer	3
+goat	2
+rcb	3
+river	3
+virat	2
+hdoop@nandan-Aspire-E5-571P:~/eclipse-workspace1$ 
+
