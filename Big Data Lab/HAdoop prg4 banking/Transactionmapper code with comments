@@ -1,0 +1,19 @@
+package BankingTransaction;
+
+import java.io.IOException;//this will handle I/o operations
+
+import org.apache.hadoop.io.IntWritable;//convert primitive to object oriented(these 2 box classes are used because our ip is (k,v) pairs  
+import org.apache.hadoop.io.LongWritable;//convert primitive to object oriented(these 2 box classes are used because our ip is (k,v) pairs  
+import org.apache.hadoop.io.Text;//convert primitive to object oriented(these 2 box classes are used because our ip is (k,v) pairs  
+import org.apache.hadoop.mapred.*;//this is used for map reduce operation
+
+public class TransactionMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, IntWritable> {
+	//private final static IntWritable one = new IntWritable(1);
+
+	public void map(LongWritable key, Text value, OutputCollector<Text, IntWritable> output, Reporter reporter) throws IOException {
+
+		String valueString = value.toString();
+		String[] Transaction = valueString.split(",");
+		output.collect(new Text(Transaction[2]), new IntWritable(Integer.parseInt(Transaction[3])));
+	}
+}
