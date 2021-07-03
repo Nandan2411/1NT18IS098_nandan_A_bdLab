@@ -1,0 +1,777 @@
+hdoop@nandan-Aspire-E5-571P:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [nandan-Aspire-E5-571P]
+Starting resourcemanager
+Starting nodemanagers
+hdoop@nandan-Aspire-E5-571P:~$ hive
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hdoop/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = f6b0864e-39ec-4adf-bc0a-9f3e4acebbce
+
+Logging initialized using configuration in jar:file:/home/hdoop/apache-hive-3.1.2-bin/lib/hive-common-3.1.2.jar!/hive-log4j2.properties Async: true
+Hive Session ID = 94473500-5436-468f-8f68-caaf1454e102
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+hive> create database bank;
+OK
+Time taken: 1.281 seconds
+hive> create table bank(bank_id:int,bname:string,blocation:string) row format delimited fields terminated by ",";
+NoViableAltException(8@[])
+	at org.apache.hadoop.hive.ql.parse.HiveParser.type(HiveParser.java:36813)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.colType(HiveParser.java:36595)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.columnNameTypeConstraint(HiveParser.java:34322)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.columnNameTypeOrConstraint(HiveParser.java:34075)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.columnNameTypeOrConstraintList(HiveParser.java:29819)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.createTableStatement(HiveParser.java:6662)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.ddlStatement(HiveParser.java:4295)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.execStatement(HiveParser.java:2494)
+	at org.apache.hadoop.hive.ql.parse.HiveParser.statement(HiveParser.java:1420)
+	at org.apache.hadoop.hive.ql.parse.ParseDriver.parse(ParseDriver.java:220)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:74)
+	at org.apache.hadoop.hive.ql.parse.ParseUtils.parse(ParseUtils.java:67)
+	at org.apache.hadoop.hive.ql.Driver.compile(Driver.java:616)
+	at org.apache.hadoop.hive.ql.Driver.compileInternal(Driver.java:1826)
+	at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1773)
+	at org.apache.hadoop.hive.ql.Driver.compileAndRespond(Driver.java:1768)
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.compileAndRespond(ReExecDriver.java:126)
+	at org.apache.hadoop.hive.ql.reexec.ReExecDriver.run(ReExecDriver.java:214)
+	at org.apache.hadoop.hive.cli.CliDriver.processLocalCmd(CliDriver.java:239)
+	at org.apache.hadoop.hive.cli.CliDriver.processCmd(CliDriver.java:188)
+	at org.apache.hadoop.hive.cli.CliDriver.processLine(CliDriver.java:402)
+	at org.apache.hadoop.hive.cli.CliDriver.executeDriver(CliDriver.java:821)
+	at org.apache.hadoop.hive.cli.CliDriver.run(CliDriver.java:759)
+	at org.apache.hadoop.hive.cli.CliDriver.main(CliDriver.java:683)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:323)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+FAILED: ParseException line 1:25 cannot recognize input near ':' 'int' ',' in column type
+hive> create table bank(bank_id int,bname string,blocation string) row format delimited fields terminated by ",";
+OK
+Time taken: 1.863 seconds
+hive> desc bank;
+OK
+bank_id             	int                 	                    
+bname               	string              	                    
+blocation           	string              	                    
+Time taken: 0.703 seconds, Fetched: 3 row(s)
+hive> create table customer(cust_id int,cname string,income float,accid int,dob date) row format delimited fields terminated by ",";
+OK
+Time taken: 0.24 seconds
+hive> create table account(accid int,cust_id int,bank_id int) row format delimited fields terminated by ",";
+OK
+Time taken: 0.235 seconds
+hive> desc customer;
+OK
+cust_id             	int                 	                    
+cname               	string              	                    
+income              	float               	                    
+accid               	int                 	                    
+dob                 	date                	                    
+Time taken: 0.096 seconds, Fetched: 5 row(s)
+hive> desc account;
+OK
+accid               	int                 	                    
+cust_id             	int                 	                    
+bank_id             	int                 	                    
+Time taken: 0.091 seconds, Fetched: 3 row(s)
+hive> insert into customer values(200,"Adarsh",50000.00,1001,"2000-08-03"),(201,"Darshan",30000.00,1002,"2004-01-02"),(202,"Gagan",45000.00,1003,"2000-07-27"),(203,"Nandan",25000.00,1004,"2000-4-23"),(204,"Ganesh",40000.00,1005,"2005-05-09");
+Query ID = hdoop_20210701211145_beed9837-a508-481a-b4f6-bd2df8ca8ffe
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0001, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0001/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0001
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2021-07-01 21:12:27,828 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 21:12:55,547 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.65 sec
+MapReduce Total cumulative CPU time: 4 seconds 650 msec
+Ended Job = job_1625152959941_0001
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/customer/.hive-staging_hive_2021-07-01_21-11-45_986_952488774537237187-1/-ext-10000
+Loading data to table default.customer
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 4.65 sec   HDFS Read: 6823 HDFS Write: 248 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 650 msec
+OK
+Time taken: 78.229 seconds
+hive> select * from customer;
+OK
+200	Adarsh	50000.0	1001	2000-08-03
+201	Darshan	30000.0	1002	2004-01-02
+202	Gagan	45000.0	1003	2000-07-27
+203	Nandan	25000.0	1004	2000-04-23
+204	Ganesh	40000.0	1005	2005-05-09
+Time taken: 0.677 seconds, Fetched: 5 row(s)
+hive> update customer set cname="Asha" where cust_id=200;
+FAILED: SemanticException [Error 10294]: Attempt to do update or delete using transaction manager that does not support these operations.
+hive> update customer SET cname="Asha" WHERE cust_id=200;
+FAILED: SemanticException [Error 10294]: Attempt to do update or delete using transaction manager that does not support these operations.
+hive> update customer SET cname=Asha WHERE cust_id=200;
+FAILED: SemanticException [Error 10294]: Attempt to do update or delete using transaction manager that does not support these operations.
+hive> insert into bank values(100,"Canara","Bangalore"),(101,"BOB","Mysore"),(102,"SBI","Sirsi"),(103,"ICICI","Dharwad"),(104,"HDFC","Hubli"),(105,"Axis","Shimoga");
+Query ID = hdoop_20210701220148_3b6d46ee-2d9c-40c6-bf82-598e817aa821
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0002, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0002/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0002
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 22:02:32,386 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:03:23,783 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.63 sec
+2021-07-01 22:03:47,644 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.14 sec
+MapReduce Total cumulative CPU time: 8 seconds 140 msec
+Ended Job = job_1625152959941_0002
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/bank/.hive-staging_hive_2021-07-01_22-01-48_307_8682409533169199838-1/-ext-10000
+Loading data to table default.bank
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.14 sec   HDFS Read: 17212 HDFS Write: 468 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 140 msec
+OK
+Time taken: 124.733 seconds
+hive> select * from customer;
+OK
+200	Adarsh	50000.0	1001	2000-08-03
+201	Darshan	30000.0	1002	2004-01-02
+202	Gagan	45000.0	1003	2000-07-27
+203	Nandan	25000.0	1004	2000-04-23
+204	Ganesh	40000.0	1005	2005-05-09
+Time taken: 0.256 seconds, Fetched: 5 row(s)
+hive> select * from bank;
+OK
+100	Canara	Bangalore
+101	BOB	Mysore
+102	SBI	Sirsi
+103	ICICI	Dharwad
+104	HDFC	Hubli
+105	Axis	Shimoga
+Time taken: 0.317 seconds, Fetched: 6 row(s)
+hive> use bank;
+OK
+Time taken: 0.111 seconds
+hive> select * from bank;
+FAILED: SemanticException [Error 10001]: Line 1:14 Table not found 'bank'
+hive> show tables;
+OK
+Time taken: 0.159 seconds
+hive> show databases;
+OK
+bank
+default
+nandan
+Time taken: 0.107 seconds, Fetched: 3 row(s)
+hive>  create table bank(bank_id int,bname string,blocation string) row format delimited fields terminated by ",";
+OK
+Time taken: 0.119 seconds
+hive> show tables;
+OK
+bank
+Time taken: 0.043 seconds, Fetched: 1 row(s)
+hive> create table customer(cust_id int,cname string,income float,accid int,dob date) row format delimited fields terminated by ",";
+OK
+Time taken: 0.177 seconds
+hive> create table account(accid int,cust_id int,bank_id int) row format delimited fields terminated by ",";
+OK
+Time taken: 0.22 seconds
+hive>  insert into customer values(200,"Adarsh",50000.00,1001,"2000-08-03"),(201,"Darshan",30000.00,1002,"2004-01-02"),(202,"Gagan",45000.00,1003,"2000-07-27"),(203,"Nandan",25000.00,1004,"2000-4-23"),(204,"Ganesh",40000.00,1005,"2005-05-09");
+Query ID = hdoop_20210701220924_8156d606-d78a-4151-9897-ac90393218f7
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0003, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0003/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0003
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2021-07-01 22:09:44,266 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:09:58,798 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.98 sec
+MapReduce Total cumulative CPU time: 4 seconds 980 msec
+Ended Job = job_1625152959941_0003
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/bank.db/customer/.hive-staging_hive_2021-07-01_22-09-24_765_1614037979654194173-1/-ext-10000
+Loading data to table bank.customer
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 4.98 sec   HDFS Read: 6903 HDFS Write: 245 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 980 msec
+OK
+Time taken: 38.708 seconds
+hive>  insert into bank values(100,"Canara","Bangalore"),(101,"BOB","Mysore"),(102,"SBI","Sirsi"),(103,"ICICI","Dharwad"),(104,"HDFC","Hubli"),(105,"Axis","Shimoga");
+Query ID = hdoop_20210701221047_2ba4a80e-883c-4825-99b0-ebd63a818a5b
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0004, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0004/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0004
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 22:11:11,061 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:11:42,064 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 5.79 sec
+2021-07-01 22:12:06,843 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 10.37 sec
+MapReduce Total cumulative CPU time: 10 seconds 370 msec
+Ended Job = job_1625152959941_0004
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/bank.db/bank/.hive-staging_hive_2021-07-01_22-10-47_609_3558446859382806656-1/-ext-10000
+Loading data to table bank.bank
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 10.37 sec   HDFS Read: 17286 HDFS Write: 465 SUCCESS
+Total MapReduce CPU Time Spent: 10 seconds 370 msec
+OK
+Time taken: 82.321 seconds
+hive> select * from bank;
+OK
+100	Canara	Bangalore
+101	BOB	Mysore
+102	SBI	Sirsi
+103	ICICI	Dharwad
+104	HDFC	Hubli
+105	Axis	Shimoga
+Time taken: 0.509 seconds, Fetched: 6 row(s)
+hive> select * from customer;
+OK
+200	Adarsh	50000.0	1001	2000-08-03
+201	Darshan	30000.0	1002	2004-01-02
+202	Gagan	45000.0	1003	2000-07-27
+203	Nandan	25000.0	1004	2000-04-23
+204	Ganesh	40000.0	1005	2005-05-09
+Time taken: 0.215 seconds, Fetched: 5 row(s)
+hive> show tables;
+OK
+account
+bank
+customer
+Time taken: 0.182 seconds, Fetched: 3 row(s)
+hive> insert into account values(1001,200,100),(1002,201,105),(1003,202,102),(1004,203,105),(1005,204,103);
+Query ID = hdoop_20210701221733_002a58e8-3fee-4837-aae3-fe1db196cd2c
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0005, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0005/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0005
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 22:17:52,659 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:18:14,600 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.46 sec
+2021-07-01 22:18:38,420 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 7.58 sec
+MapReduce Total cumulative CPU time: 7 seconds 580 msec
+Ended Job = job_1625152959941_0005
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/bank.db/account/.hive-staging_hive_2021-07-01_22-17-33_585_7784039767051728204-1/-ext-10000
+Loading data to table bank.account
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 7.58 sec   HDFS Read: 15854 HDFS Write: 405 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 580 msec
+OK
+Time taken: 67.881 seconds
+hive> select * from account;
+OK
+1001	200	100
+1002	201	105
+1003	202	102
+1004	203	105
+1005	204	103
+Time taken: 0.37 seconds, Fetched: 5 row(s)
+hive> show tables;
+OK
+account
+bank
+customer
+Time taken: 0.148 seconds, Fetched: 3 row(s)
+hive> alter table account rename to accnt;
+OK
+Time taken: 0.58 seconds
+hive> show tables;
+OK
+accnt
+bank
+customer
+Time taken: 0.028 seconds, Fetched: 3 row(s)
+hive> alter table accnt rename to account;
+OK
+Time taken: 0.27 seconds
+hive> show tables;
+OK
+account
+bank
+customer
+Time taken: 0.025 seconds, Fetched: 3 row(s)
+hive> alter table customer add columns(Ph_no int);
+OK
+Time taken: 0.331 seconds
+hive> desc customer;
+OK
+cust_id             	int                 	                    
+cname               	string              	                    
+income              	float               	                    
+accid               	int                 	                    
+dob                 	date                	                    
+ph_no               	int                 	                    
+Time taken: 0.046 seconds, Fetched: 6 row(s)
+hive> select * from customer;
+OK
+200	Adarsh	50000.0	1001	2000-08-03	NULL
+201	Darshan	30000.0	1002	2004-01-02	NULL
+202	Gagan	45000.0	1003	2000-07-27	NULL
+203	Nandan	25000.0	1004	2000-04-23	NULL
+204	Ganesh	40000.0	1005	2005-05-09	NULL
+Time taken: 0.361 seconds, Fetched: 5 row(s)
+hive> alter table account rename to accounts;
+OK
+Time taken: 0.242 seconds
+hive> show tables;
+OK
+accounts
+bank
+customer
+Time taken: 0.033 seconds, Fetched: 3 row(s)
+hive> alter table bank replace columns blocation string,location string);
+FAILED: ParseException line 1:33 missing ( at 'blocation' near '<EOF>'
+hive> desc bank;
+OK
+bank_id             	int                 	                    
+bname               	string              	                    
+blocation           	string              	                    
+Time taken: 0.073 seconds, Fetched: 3 row(s)
+hive> select cust_id,cname from bank b,customer c,accounts a where b.bank_id=a.bank_id and c.cust_id=a.cust_id and bname="Axis";
+FAILED: SemanticException Column cust_id Found in more than One Tables/Subqueries
+hive> select c.cust_id,c.cname from bank b,customer c,accounts a where b.bank_id=a.bank_id and c.cust_id=a.cust_id and bname="Axis";
+No Stats for bank@customer, Columns: cname, cust_id
+Query ID = hdoop_20210701224653_acd20737-dc42-4302-a646-4d93425c5c9f
+Total jobs = 1
+
+
+SLF4J: Found binding in [jar:file:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+
+2021-07-01 22:47:13	Starting to launch local task to process map join;	maximum memory = 239075328
+2021-07-01 22:47:16	Dump the side-table for tag: 1 with group count: 5 into file: file:/tmp/hdoop/f6b0864e-39ec-4adf-bc0a-9f3e4acebbce/hive_2021-07-01_22-46-53_793_2416118037819227727-1/-local-10005/HashTable-Stage-5/MapJoin-mapfile01--.hashtable
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0006, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0006/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0006
+Hadoop job information for Stage-5: number of mappers: 1; number of reducers: 0
+2021-07-01 22:47:33,865 Stage-5 map = 0%,  reduce = 0%
+2021-07-01 22:47:46,435 Stage-5 map = 100%,  reduce = 0%, Cumulative CPU 4.25 sec
+MapReduce Total cumulative CPU time: 4 seconds 250 msec
+Ended Job = job_1625152959941_0006
+MapReduce Jobs Launched: 
+Stage-Stage-5: Map: 1   Cumulative CPU: 4.25 sec   HDFS Read: 11894 HDFS Write: 134 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 250 msec
+OK
+201	Darshan
+203	Nandan
+Time taken: 55.968 seconds, Fetched: 2 row(s)
+hive> select cust_id,cname from customer where max(income),min(income);
+FAILED: ParseException line 1:52 missing EOF at ',' near ')'
+hive> select max(income),min(income) from customer;
+Query ID = hdoop_20210701225310_230b88c1-914a-416b-a6bd-daacaaf3065c
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0007, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0007/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0007
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 22:53:28,559 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:53:39,409 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.97 sec
+2021-07-01 22:53:52,827 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 7.07 sec
+MapReduce Total cumulative CPU time: 7 seconds 70 msec
+Ended Job = job_1625152959941_0007
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 7.07 sec   HDFS Read: 14459 HDFS Write: 115 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 70 msec
+OK
+50000.0	25000.0
+Time taken: 45.668 seconds, Fetched: 1 row(s)
+hive> select cust_id,cname,max(income),min(income) from customer;
+FAILED: SemanticException [Error 10025]: Line 1:7 Expression not in GROUP BY key 'cust_id'
+hive> select cust_id,cname,max(income),min(income) from customer;
+FAILED: SemanticException [Error 10025]: Line 1:7 Expression not in GROUP BY key 'cust_id'
+hive> select c.cust_id,c.cname,c.max(income),c.min(income) from customer c;
+FAILED: SemanticException [Error 10011]: Invalid function c.max
+hive> select c.cust_id,cname,max(income),min(income) from customer c;
+FAILED: SemanticException [Error 10025]: Line 1:7 Expression not in GROUP BY key 'cust_id'
+hive> select c.cust_id,cname,max(income),min(income) from customer c group by c.cust_id;
+FAILED: SemanticException [Error 10025]: Line 1:17 Expression not in GROUP BY key 'cname'
+hive> select cust_id,cname,max(income),min(income) from customer group by cust_id;
+FAILED: SemanticException [Error 10025]: Line 1:15 Expression not in GROUP BY key 'cname'
+hive> select cust_id,cname,max(income),min(income) from customer group by cust_id,cname;
+Query ID = hdoop_20210701225700_0ebdb00a-8dba-446e-8891-a88d239a7262
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0008, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0008/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0008
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 22:57:21,463 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 22:57:34,387 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.03 sec
+2021-07-01 22:57:48,914 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.49 sec
+MapReduce Total cumulative CPU time: 8 seconds 490 msec
+Ended Job = job_1625152959941_0008
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.49 sec   HDFS Read: 15363 HDFS Write: 282 SUCCESS
+Total MapReduce CPU Time Spent: 8 seconds 490 msec
+OK
+200	Adarsh	50000.0	50000.0
+201	Darshan	30000.0	30000.0
+202	Gagan	45000.0	45000.0
+203	Nandan	25000.0	25000.0
+204	Ganesh	40000.0	40000.0
+Time taken: 51.418 seconds, Fetched: 5 row(s)
+hive> select cust_id,cname,max(income),min(income) from customer where income=max(income) and income=min(income) group by cust_id,cname;
+FAILED: SemanticException [Error 10128]: Line 1:72 Not yet supported place for UDAF 'max'
+hive> select cust_id,cname,max(income) as mx,min(income) as mn from customer where income=mx and income=mn group by cust_id,cname;
+FAILED: SemanticException [Error 10004]: Line 1:84 Invalid table alias or column reference 'mx': (possible column names are: cust_id, cname, income, accid, dob, ph_no)
+hive> select max(income),min(income) from customer;
+Query ID = hdoop_20210701230105_7cd07570-bc73-4b47-af26-2f73887ea164
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0009, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0009/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0009
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 23:01:21,888 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 23:01:30,869 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 2.85 sec
+2021-07-01 23:01:39,149 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 6.99 sec
+MapReduce Total cumulative CPU time: 6 seconds 990 msec
+Ended Job = job_1625152959941_0009
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 6.99 sec   HDFS Read: 14466 HDFS Write: 115 SUCCESS
+Total MapReduce CPU Time Spent: 6 seconds 990 msec
+OK
+50000.0	25000.0
+Time taken: 37.181 seconds, Fetched: 1 row(s)
+hive> select cname,max(income),min(income) from customer;
+FAILED: SemanticException [Error 10025]: Line 1:7 Expression not in GROUP BY key 'cname'
+hive> select cname,max(income),min(income) from customer group by cname;
+Query ID = hdoop_20210701230201_828d2987-c880-4b04-be82-298e7aa0e441
+Total jobs = 1
+Launching Job 1 out of 1
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0010, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0010/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0010
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 23:02:16,684 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 23:02:25,046 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 3.59 sec
+2021-07-01 23:02:33,322 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 7.77 sec
+MapReduce Total cumulative CPU time: 7 seconds 770 msec
+Ended Job = job_1625152959941_0010
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 7.77 sec   HDFS Read: 15129 HDFS Write: 262 SUCCESS
+Total MapReduce CPU Time Spent: 7 seconds 770 msec
+OK
+Adarsh	50000.0	50000.0
+Darshan	30000.0	30000.0
+Gagan	45000.0	45000.0
+Ganesh	40000.0	40000.0
+Nandan	25000.0	25000.0
+Time taken: 35.035 seconds, Fetched: 5 row(s)
+hive> select cust_id,cname from customer c,account a where c.cust_id=a.cust_id;
+FAILED: SemanticException [Error 10001]: Line 1:37 Table not found 'account'
+hive> select cust_id,cname from customer c,accounts a where c.cust_id=a.cust_id;
+FAILED: SemanticException Column cust_id Found in more than One Tables/Subqueries
+hive> select c.cust_id,c.cname from customer c,accounts a where c.cust_id=a.cust_id;
+Query ID = hdoop_20210701230358_487524f7-042c-4a13-88ab-6ac934e33e45
+Total jobs = 1
+
+
+
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]2021-07-01 23:04:14	Starting to launch local task to process map join;	maximum memory = 2390753282021-07-01 23:04:17Dump the side-table for tag: 1 with group count: 5 into file: file:/tmp/hdoop/f6b0864e-39ec-4adf-bc0a-9f3e4acebbce/hive_2021-07-01_23-03-58_779_7909420690309779173-1/-local-10004/HashTable-Stage-3/MapJoin-mapfile21--.hashtable
+2021-07-01 23:04:18	Uploaded 1 File to: file:/tmp/hdoop/f6b0864e-39ec-4adf-bc0a-9f3e4acebbce/hive_2021-07-01_23-03-58_779_7909420690309779173-1/-local-10004/HashTable-Stage-3/MapJoin-mapfile21--.hashtable (355 bytes)
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0011, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0011/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0011
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-07-01 23:04:31,907 Stage-3 map = 0%,  reduce = 0%
+2021-07-01 23:04:41,265 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 4.91 sec
+MapReduce Total cumulative CPU time: 4 seconds 910 msec
+Ended Job = job_1625152959941_0011
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 4.91 sec   HDFS Read: 9830 HDFS Write: 202 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 910 msec
+OK
+200	Adarsh
+201	Darshan
+202	Gagan
+203	Nandan
+204	Ganesh
+Time taken: 44.798 seconds, Fetched: 5 row(s)
+hive> insert into customer values(205,"Gaurav",15000.00,1006,"2000-11-20");
+FAILED: SemanticException [Error 10044]: Line 1:12 Cannot insert into target table because column number/types are different 'customer': Table insclause-0 has 6 columns, but query has 5 columns.
+hive> desc customer;
+OK
+cust_id             	int                 	                    
+cname               	string              	                    
+income              	float               	                    
+accid               	int                 	                    
+dob                 	date                	                    
+ph_no               	int                 	                    
+Time taken: 0.066 seconds, Fetched: 6 row(s)
+hive> insert into customer values(205,"Gaurav",15000.00,1006,"2000-11-20",9999998888);
+Query ID = hdoop_20210701231119_9150c3fa-7f94-4131-af9f-2bcaf3f6f735
+Total jobs = 3
+Launching Job 1 out of 3
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0012, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0012/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0012
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 0
+2021-07-01 23:11:33,909 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 23:11:42,465 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.97 sec
+MapReduce Total cumulative CPU time: 4 seconds 970 msec
+Ended Job = job_1625152959941_0012
+Stage-4 is selected by condition resolver.
+Stage-3 is filtered out by condition resolver.
+Stage-5 is filtered out by condition resolver.
+Moving data to directory hdfs://127.0.0.1:9000/user/hive/warehouse/bank.db/customer/.hive-staging_hive_2021-07-01_23-11-19_721_6962515348950491616-1/-ext-10000
+Loading data to table bank.customer
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1   Cumulative CPU: 4.97 sec   HDFS Read: 6706 HDFS Write: 115 SUCCESS
+Total MapReduce CPU Time Spent: 4 seconds 970 msec
+OK
+Time taken: 27.349 seconds
+hive> select cust_id,cname from customer where income<20000.00;
+OK
+205	Gaurav
+Time taken: 0.303 seconds, Fetched: 1 row(s)
+hive> select cust_id,cname,dob from customer where dob not in ("1990-10-10","1993-2-1")order by DESC;
+FAILED: SemanticException [Error 10004]: Line 1:90 Invalid table alias or column reference 'DESC': (possible column names are: cust_id, cname, dob)
+hive> select cust_id,cname,dob from customer where dob not in ("1990-10-10","1993-2-1")group by cust_id,cname,dob order by DESC;
+FAILED: SemanticException [Error 10004]: Line 1:117 Invalid table alias or column reference 'DESC': (possible column names are: cust_id, cname, dob)
+hive> select cust_id,cname,dob from customer where dob not in ("1990-10-10","1993-2-1")group by cust_id,cname,dob order by cust_id DESC;
+Query ID = hdoop_20210701231936_027af0c1-57c2-4f95-9856-502a614efb81
+Total jobs = 2
+Launching Job 1 out of 2
+Number of reduce tasks not specified. Estimated from input data size: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0013, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0013/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0013
+Hadoop job information for Stage-1: number of mappers: 1; number of reducers: 1
+2021-07-01 23:19:50,922 Stage-1 map = 0%,  reduce = 0%
+2021-07-01 23:20:11,598 Stage-1 map = 100%,  reduce = 0%, Cumulative CPU 4.5 sec
+2021-07-01 23:20:37,477 Stage-1 map = 100%,  reduce = 100%, Cumulative CPU 8.02 sec
+MapReduce Total cumulative CPU time: 8 seconds 20 msec
+Ended Job = job_1625152959941_0013
+Launching Job 2 out of 2
+Number of reduce tasks determined at compile time: 1
+In order to change the average load for a reducer (in bytes):
+  set hive.exec.reducers.bytes.per.reducer=<number>
+In order to limit the maximum number of reducers:
+  set hive.exec.reducers.max=<number>
+In order to set a constant number of reducers:
+  set mapreduce.job.reduces=<number>
+Starting Job = job_1625152959941_0014, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0014/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0014
+Hadoop job information for Stage-2: number of mappers: 1; number of reducers: 1
+2021-07-01 23:20:59,434 Stage-2 map = 0%,  reduce = 0%
+2021-07-01 23:21:06,813 Stage-2 map = 100%,  reduce = 0%, Cumulative CPU 2.55 sec
+2021-07-01 23:21:15,065 Stage-2 map = 100%,  reduce = 100%, Cumulative CPU 6.45 sec
+MapReduce Total cumulative CPU time: 6 seconds 450 msec
+Ended Job = job_1625152959941_0014
+MapReduce Jobs Launched: 
+Stage-Stage-1: Map: 1  Reduce: 1   Cumulative CPU: 8.02 sec   HDFS Read: 13594 HDFS Write: 270 SUCCESS
+Stage-Stage-2: Map: 1  Reduce: 1   Cumulative CPU: 6.45 sec   HDFS Read: 8317 HDFS Write: 291 SUCCESS
+Total MapReduce CPU Time Spent: 14 seconds 470 msec
+OK
+205	Gaurav	2000-11-20
+204	Ganesh	2005-05-09
+203	Nandan	2000-04-23
+202	Gagan	2000-07-27
+201	Darshan	2004-01-02
+200	Adarsh	2000-08-03
+Time taken: 102.345 seconds, Fetched: 6 row(s)
+hive> create view Custaccount as select a.cust_id,a.bank_id,a.acc_id,cname from account,customer where c.cust_id=a.cust_id;
+FAILED: SemanticException [Error 10001]: Line 1:74 Table not found 'account'
+hive> create view Custaccount as select a.cust_id,a.bank_id,a.acc_id,cname from accounts a,customer c where c.cust_id=a.cust_id;
+FAILED: SemanticException [Error 10002]: Line 1:56 Invalid column reference 'acc_id'
+hive> desc accounts;
+OK
+accid               	int                 	                    
+cust_id             	int                 	                    
+bank_id             	int                 	                    
+Time taken: 0.17 seconds, Fetched: 3 row(s)
+hive> create view Custaccount as select a.cust_id,a.bank_id,a.accid,cname from accounts a,customer c where c.cust_id=a.cust_id;
+OK
+Time taken: 0.397 seconds
+hive> select * from Custaccount;
+Query ID = hdoop_20210701233241_b457b533-2c7d-4019-b7e2-0e3683559729
+Total jobs = 1
+
+
+
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]2021-07-01 23:33:02	Starting to launch local task to process map join;	maximum memory = 239075328
+2021-07-01 23:33:08	Dump the side-table for tag: 0 with group count: 5 into file: file:/tmp/hdoop/f6b0864e-39ec-4adf-bc0a-9f3e4acebbce/hive_2021-07-01_23-32-41_923_2380277180622216089-1/-local-10004/HashTable-Stage-3/MapJoin-mapfile30--.hashtable
+2021-07-01 23:33:09	Uploaded 1 File to: file:/tmp/hdoop/f6b0864e-39ec-4adf-bc0a-9f3e4acebbce/hive_2021-07-01_23-32-41_923_2380277180622216089-1/-local-10004/HashTable-Stage-3/MapJoin-mapfile30--.hashtable (380 bytes)
+2021-07-01 23:33:09	End of local task; Time Taken: 6.384 sec.
+Execution completed successfully
+MapredLocal task succeeded
+Launching Job 1 out of 1
+Number of reduce tasks is set to 0 since there's no reduce operator
+Starting Job = job_1625152959941_0015, Tracking URL = http://nandan-Aspire-E5-571P:8088/proxy/application_1625152959941_0015/
+Kill Command = /home/hdoop/hadoop-3.2.1/bin/mapred job  -kill job_1625152959941_0015
+Hadoop job information for Stage-3: number of mappers: 1; number of reducers: 0
+2021-07-01 23:33:35,437 Stage-3 map = 0%,  reduce = 0%
+2021-07-01 23:33:50,924 Stage-3 map = 100%,  reduce = 0%, Cumulative CPU 3.89 sec
+MapReduce Total cumulative CPU time: 3 seconds 890 msec
+Ended Job = job_1625152959941_0015
+MapReduce Jobs Launched: 
+Stage-Stage-3: Map: 1   Cumulative CPU: 3.89 sec   HDFS Read: 10489 HDFS Write: 247 SUCCESS
+Total MapReduce CPU Time Spent: 3 seconds 890 msec
+OK
+200	100	1001	Adarsh
+201	105	1002	Darshan
+202	102	1003	Gagan
+203	105	1004	Nandan
+204	103	1005	Ganesh
+Time taken: 71.289 seconds, Fetched: 5 row(s)
+hive> select * from bank;
+OK
+100	Canara	Bangalore
+101	BOB	Mysore
+102	SBI	Sirsi
+103	ICICI	Dharwad
+104	HDFC	Hubli
+105	Axis	Shimoga
+Time taken: 0.368 seconds, Fetched: 6 row(s)
+hive> select * from customer;
+OK
+200	Adarsh	50000.0	1001	2000-08-03	NULL
+201	Darshan	30000.0	1002	2004-01-02	NULL
+202	Gagan	45000.0	1003	2000-07-27	NULL
+203	Nandan	25000.0	1004	2000-04-23	NULL
+204	Ganesh	40000.0	1005	2005-05-09	NULL
+205	Gaurav	15000.0	1006	2000-11-20	1410064296
+Time taken: 0.289 seconds, Fetched: 6 row(s)
+hive> select * from accounts;
+OK
+1001	200	100
+1002	201	105
+1003	202	102
+1004	203	105
+1005	204	103
+Time taken: 0.265 seconds, Fetched: 5 row(s)
+hive> update Custaccount set cname="Akash" where cust_id=200;
+FAILED: SemanticException [Error 10294]: Attempt to do update or delete using transaction manager that does not support these operations.
+hive> 
+
+
+
+
+
+hdoop@nandan-Aspire-E5-571P:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [nandan-Aspire-E5-571P]
+Starting resourcemanager
+Starting nodemanagers
+hdoop@nandan-Aspire-E5-571P:~$ hive
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/home/hdoop/apache-hive-3.1.2-bin/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/home/hdoop/hadoop-3.2.1/share/hadoop/common/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Hive Session ID = 3c99a031-269c-466a-92d0-5435d69a94df
+
+Logging initialized using configuration in jar:file:/home/hdoop/apache-hive-3.1.2-bin/lib/hive-common-3.1.2.jar!/hive-log4j2.properties Async: true
+Hive-on-MR is deprecated in Hive 2 and may not be available in the future versions. Consider using a different execution engine (i.e. spark, tez) or using Hive 1.X releases.
+Hive Session ID = a898fd20-3843-407c-bc84-5f709c3465c8
+hive> show databases;
+OK
+bank
+customer
+default
+nandan
+Time taken: 1.012 seconds, Fetched: 4 row(s)
+hive> use bank;
+OK
+Time taken: 0.036 seconds
+hive> show tables;
+OK
+accounts
+bank
+custaccount
+customer
+Time taken: 0.062 seconds, Fetched: 4 row(s)
+hive> desc bank;
+OK
+bank_id             	int                 	                    
+bname               	string              	                    
+blocation           	string              	                    
+Time taken: 0.894 seconds, Fetched: 3 row(s)
+hive> alter table bank change blocation location string;
+OK
+Time taken: 1.282 seconds
+hive> desc bank;
+OK
+bank_id             	int                 	                    
+bname               	string              	                    
+location            	string              	                    
+Time taken: 0.103 seconds, Fetched: 3 row(s)
+hive> 
+
