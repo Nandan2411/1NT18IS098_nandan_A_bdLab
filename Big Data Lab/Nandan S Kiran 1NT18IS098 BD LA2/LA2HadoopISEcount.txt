@@ -1,0 +1,199 @@
+hdoop@nandan-Aspire-E5-571P:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hdoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [nandan-Aspire-E5-571P]
+Starting resourcemanager
+Starting nodemanagers
+hdoop@nandan-Aspire-E5-571P:~$ jps
+4148 Jps
+3236 SecondaryNameNode
+2836 NameNode
+3719 NodeManager
+3548 ResourceManager
+3005 DataNode
+hdoop@nandan-Aspire-E5-571P:~$ eclipse
+org.eclipse.m2e.logback.configuration: The org.eclipse.m2e.logback.configuration bundle was activated before the state location was initialized.  Will retry after the state location is initialized.
+org.eclipse.m2e.logback.configuration: Logback config file: /home/hdoop/eclipse-workspace1/.metadata/.plugins/org.eclipse.m2e.logback.configuration/logback.1.14.0.20191209-1925.xml
+org.eclipse.m2e.logback.configuration: Initializing logback
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.138: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.138: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.139: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.139: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.139: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.139: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.140: Negative content width -4 (allocation 2, extents 3x3) while allocating gadget (node progressbar, owner GtkProgressBar)
+
+(Eclipse:4208): Gtk-WARNING **: 21:12:26.140: Negative content width -2 (allocation 0, extents 1x1) while allocating gadget (node trough, owner GtkProgressBar)
+Memory pressure relief: Total: res = 21131264/21200896/69632, res+swap = 16125952/16125952/0
+Memory pressure relief: Total: res = 21053440/20647936/-405504, res+swap = 15847424/15847424/0
+Memory pressure relief: Total: res = 20639744/20643840/4096, res+swap = 15450112/15450112/0
+Memory pressure relief: Total: res = 20635648/20635648/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20631552/20631552/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20619264/20619264/0, res+swap = 15433728/15433728/0
+Memory pressure relief: Total: res = 20615168/20615168/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20611072/20611072/0, res+swap = 15433728/15433728/0
+Memory pressure relief: Total: res = 20611072/20611072/0, res+swap = 15441920/15441920/0
+Memory pressure relief: Total: res = 20598784/20598784/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20594688/20594688/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20590592/20590592/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20586496/20586496/0, res+swap = 15441920/15441920/0
+Memory pressure relief: Total: res = 20578304/20578304/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20574208/20574208/0, res+swap = 15441920/15441920/0
+Memory pressure relief: Total: res = 20566016/20566016/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20561920/20561920/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20557824/20557824/0, res+swap = 15441920/15441920/0
+Memory pressure relief: Total: res = 20549632/20549632/0, res+swap = 15437824/15437824/0
+Memory pressure relief: Total: res = 20811776/20811776/0, res+swap = 15831040/15831040/0
+Memory pressure relief: Total: res = 20758528/20758528/0, res+swap = 15659008/15659008/0
+Memory pressure relief: Total: res = 20754432/20754432/0, res+swap = 15663104/15663104/0
+Memory pressure relief: Total: res = 12337152/12087296/-249856, res+swap = 8097792/8097792/0
+Memory pressure relief: Total: res = 11988992/11751424/-237568, res+swap = 7655424/7655424/0
+Memory pressure relief: Total: res = 20746240/20746240/0, res+swap = 15659008/15659008/0
+Memory pressure relief: Total: res = 11739136/11173888/-565248, res+swap = 7413760/7413760/0
+Memory pressure relief: Total: res = 20885504/20971520/86016, res+swap = 15667200/15667200/0
+Memory pressure relief: Total: res = 11173888/11177984/4096, res+swap = 6832128/6832128/0
+Memory pressure relief: Total: res = 17059840/17059840/0, res+swap = 11837440/11837440/0
+Memory pressure relief: Total: res = 17051648/17051648/0, res+swap = 11829248/11829248/0
+Memory pressure relief: Total: res = 17051648/17051648/0, res+swap = 11833344/11833344/0
+Memory pressure relief: Total: res = 17047552/17051648/4096, res+swap = 11837440/11837440/0
+Memory pressure relief: Total: res = 17047552/17047552/0, res+swap = 11837440/11837440/0
+Memory pressure relief: Total: res = 11968512/11735040/-233472, res+swap = 7630848/7630848/0
+Memory pressure relief: Total: res = 17047552/17047552/0, res+swap = 11845632/11845632/0
+hdoop@nandan-Aspire-E5-571P:~$ hadoop fs -ls
+Found 21 items
+-rw-r--r--   1 hdoop supergroup        638 2021-07-03 18:14 LA2.csv
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:52 NandanSkiran
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:37 empty.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-06 23:38 empty1.txt
+-rw-r--r--   1 hdoop supergroup          3 2021-05-07 00:07 f2.txt
+-rw-r--r--   1 hdoop supergroup         46 2021-05-03 13:09 input.txt
+-rw-r--r--   1 hdoop supergroup         43 2021-05-10 12:39 input1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:05 new.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:04 new1.txt
+-rw-r--r--   1 hdoop supergroup          0 2021-05-07 00:08 new3.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-03 13:12 output
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:44 output1
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:56 output3
+drwxr-xr-x   - hdoop supergroup          0 2021-05-17 13:05 output4
+drwxr-xr-x   - hdoop supergroup          0 2021-05-24 11:56 output5
+drwxr-xr-x   - hdoop supergroup          0 2021-07-03 18:18 output6
+drwxr-xr-x   - hdoop supergroup          0 2021-07-03 18:23 output7
+drwxr-xr-x   - hdoop supergroup          0 2021-05-06 23:59 prog2
+-rw-r--r--   1 hdoop supergroup        139 2021-05-17 12:59 sales_withoutHeader.csv
+-rw-r--r--   1 hdoop supergroup          0 2021-04-26 15:00 test.txt
+drwxr-xr-x   - hdoop supergroup          0 2021-05-10 12:54 word
+hdoop@nandan-Aspire-E5-571P:~$ cd Desktop
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ ls
+Banking1.jar  Banking3.jar  LA2Hadoop.jar
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop jar LA2Hadoop.jar LA2.csv output8
+Exception in thread "main" java.lang.ClassNotFoundException: LA2.csv
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.apache.hadoop.util.RunJar.run(RunJar.java:316)
+	at org.apache.hadoop.util.RunJar.main(RunJar.java:236)
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop jar LA2Hadoop.jar EmpISE.EmpISE LA2.csv output8
+2021-07-04 21:38:02,039 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-07-04 21:38:02,595 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-07-04 21:38:03,249 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-07-04 21:38:03,370 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1625413264763_0001
+2021-07-04 21:38:03,762 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 21:38:04,759 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-07-04 21:38:04,999 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 21:38:05,121 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 21:38:05,164 INFO mapreduce.JobSubmitter: number of splits:2
+2021-07-04 21:38:05,786 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 21:38:05,830 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1625413264763_0001
+2021-07-04 21:38:05,830 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-07-04 21:38:06,235 INFO conf.Configuration: resource-types.xml not found
+2021-07-04 21:38:06,236 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-07-04 21:38:06,918 INFO impl.YarnClientImpl: Submitted application application_1625413264763_0001
+2021-07-04 21:38:06,999 INFO mapreduce.Job: The url to track the job: http://nandan-Aspire-E5-571P:8088/proxy/application_1625413264763_0001/
+2021-07-04 21:38:07,002 INFO mapreduce.Job: Running job: job_1625413264763_0001
+2021-07-04 21:38:22,362 INFO mapreduce.Job: Job job_1625413264763_0001 running in uber mode : false
+2021-07-04 21:38:22,363 INFO mapreduce.Job:  map 0% reduce 0%
+2021-07-04 21:38:50,359 INFO mapreduce.Job:  map 100% reduce 0%
+2021-07-04 21:39:19,409 INFO mapreduce.Job:  map 100% reduce 100%
+2021-07-04 21:39:19,420 INFO mapreduce.Job: Job job_1625413264763_0001 completed successfully
+2021-07-04 21:39:19,604 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=120
+		FILE: Number of bytes written=677753
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=1141
+		HDFS: Number of bytes written=54
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=48030
+		Total time spent by all reduces in occupied slots (ms)=23362
+		Total time spent by all map tasks (ms)=48030
+		Total time spent by all reduce tasks (ms)=23362
+		Total vcore-milliseconds taken by all map tasks=48030
+		Total vcore-milliseconds taken by all reduce tasks=23362
+		Total megabyte-milliseconds taken by all map tasks=49182720
+		Total megabyte-milliseconds taken by all reduce tasks=23922688
+	Map-Reduce Framework
+		Map input records=20
+		Map output records=13
+		Map output bytes=715
+		Map output materialized bytes=126
+		Input split bytes=184
+		Combine input records=13
+		Combine output records=2
+		Reduce input groups=1
+		Reduce shuffle bytes=126
+		Reduce input records=2
+		Reduce output records=1
+		Spilled Records=4
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=299
+		CPU time spent (ms)=3120
+		Physical memory (bytes) snapshot=650907648
+		Virtual memory (bytes) snapshot=7768682496
+		Total committed heap usage (bytes)=478150656
+		Peak Map Physical memory (bytes)=254951424
+		Peak Map Virtual memory (bytes)=2585833472
+		Peak Reduce Physical memory (bytes)=143622144
+		Peak Reduce Virtual memory (bytes)=2597195776
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=957
+	File Output Format Counters 
+		Bytes Written=54
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop fs -ls output8
+Found 2 items
+-rw-r--r--   1 hdoop supergroup          0 2021-07-04 21:39 output8/_SUCCESS
+-rw-r--r--   1 hdoop supergroup         54 2021-07-04 21:39 output8/part-00000
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop fs -cat output8/part-00000
+2021-07-04 21:40:54,247 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Total no.of employees working in ISE Department : 	13
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ 
+

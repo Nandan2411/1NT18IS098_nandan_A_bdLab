@@ -1,0 +1,89 @@
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop jar LA2Hadoopexperience.jar EmpISE.EmpISE LA2.csv output11
+2021-07-04 22:13:34,056 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-07-04 22:13:34,541 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.1:8032
+2021-07-04 22:13:34,932 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2021-07-04 22:13:35,050 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hdoop/.staging/job_1625413264763_0004
+2021-07-04 22:13:35,452 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 22:13:36,494 INFO mapred.FileInputFormat: Total input files to process : 1
+2021-07-04 22:13:36,642 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 22:13:37,295 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 22:13:37,829 INFO mapreduce.JobSubmitter: number of splits:2
+2021-07-04 22:13:38,161 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+2021-07-04 22:13:38,650 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1625413264763_0004
+2021-07-04 22:13:38,650 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2021-07-04 22:13:39,238 INFO conf.Configuration: resource-types.xml not found
+2021-07-04 22:13:39,239 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2021-07-04 22:13:39,365 INFO impl.YarnClientImpl: Submitted application application_1625413264763_0004
+2021-07-04 22:13:39,416 INFO mapreduce.Job: The url to track the job: http://nandan-Aspire-E5-571P:8088/proxy/application_1625413264763_0004/
+2021-07-04 22:13:39,417 INFO mapreduce.Job: Running job: job_1625413264763_0004
+2021-07-04 22:13:49,575 INFO mapreduce.Job: Job job_1625413264763_0004 running in uber mode : false
+2021-07-04 22:13:49,577 INFO mapreduce.Job:  map 0% reduce 0%
+2021-07-04 22:13:58,692 INFO mapreduce.Job:  map 100% reduce 0%
+2021-07-04 22:14:05,777 INFO mapreduce.Job:  map 100% reduce 100%
+2021-07-04 22:14:07,804 INFO mapreduce.Job: Job job_1625413264763_0004 completed successfully
+2021-07-04 22:14:08,017 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=104
+		FILE: Number of bytes written=677700
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=1141
+		HDFS: Number of bytes written=46
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=13721
+		Total time spent by all reduces in occupied slots (ms)=4416
+		Total time spent by all map tasks (ms)=13721
+		Total time spent by all reduce tasks (ms)=4416
+		Total vcore-milliseconds taken by all map tasks=13721
+		Total vcore-milliseconds taken by all reduce tasks=4416
+		Total megabyte-milliseconds taken by all map tasks=14050304
+		Total megabyte-milliseconds taken by all reduce tasks=4521984
+	Map-Reduce Framework
+		Map input records=20
+		Map output records=10
+		Map output bytes=470
+		Map output materialized bytes=110
+		Input split bytes=184
+		Combine input records=10
+		Combine output records=2
+		Reduce input groups=1
+		Reduce shuffle bytes=110
+		Reduce input records=2
+		Reduce output records=1
+		Spilled Records=4
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=365
+		CPU time spent (ms)=2520
+		Physical memory (bytes) snapshot=745721856
+		Virtual memory (bytes) snapshot=7770734592
+		Total committed heap usage (bytes)=642252800
+		Peak Map Physical memory (bytes)=281694208
+		Peak Map Virtual memory (bytes)=2587828224
+		Peak Reduce Physical memory (bytes)=182697984
+		Peak Reduce Virtual memory (bytes)=2595921920
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=957
+	File Output Format Counters 
+		Bytes Written=46
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ hadoop fs -cat output11/part-00000
+2021-07-04 22:14:27,823 INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false
+Total no.of employees with experience=5 : 	10
+hdoop@nandan-Aspire-E5-571P:~/Desktop$ 
+
